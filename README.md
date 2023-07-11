@@ -1,3 +1,4 @@
+
 # Godot Engine
 
 <p align="center">
@@ -6,74 +7,48 @@
   </a>
 </p>
 
-## 2D and 3D cross-platform game engine
+Original repository: https://github.com/godotengine/godot/tree/3.5
 
-**[Godot Engine](https://godotengine.org) is a feature-packed, cross-platform
-game engine to create 2D and 3D games from a unified interface.** It provides a
-comprehensive set of [common tools](https://godotengine.org/features), so that users can focus on making games
-without having to reinvent the wheel. Games can be exported with one click to a
-number of platforms, including the major desktop platforms (Linux, macOS,
-Windows), mobile platforms (Android, iOS), as well as Web-based platforms
-(HTML5) and
-[consoles](https://docs.godotengine.org/en/latest/tutorials/platform/consoles.html).
+## Description
+This is a custom build of the Godot Engine (v3.5.0) by me, cycastic (also known by my accursed handle UwUOwOUmUOmO). This repository is originally created dedicated to my unnamed RTS game, but due to various reasons, I decided to make it available publicly.
+The following is a list of feature that was added to the engine, most are situated inside `modules/`, others are modified classes from `core/`:
 
-## Free, open source and community-driven
+- Advanced curve: A derived class from `Curve`, used for approximation of definite integral using Trapezoidal rule
+- Daemon manager: A singleton class that is used to manage daemon processes (deprecated)
+- Basic scheduler: A test class used to study the functionalities of a task scheduler (deprecated)
+- File Access EPK: A planned `FileAccess` derived class, used to load encrypted `.epk` resource file
+- Virtual File Access (VFA): A `FileAccess` derived class, used to load file contents from other `FileAccess` to heap allocated memory. These loaded files are now called virtual files
+- Virtual File Access (Project Settings): `ProjectSettings` singleton class was modified to be able to load `.pck` files to the memory using VFA before actually reading the resource files. Through various tests, it is concluded that this provide no performance advantages whatsoever despite taking up a lot of memory
+- GodotSteam: A module that contains the steam library for Godot, the original repository can be found [here](https://gramps.github.io/GodotSteam/)
+- Hub: A simple singleton class used for logging
+- Future: A simple asynchronous execution module. This appear to work for the time being, but various tests must be carried out before it can become stable
+- Layerable Control: A `Control` (Godot term for UI component) derived class that can be used to open and close UI other layerable controls in a LIFO manner
+- Node Dispatcher: A singleton used to invoke node's iteration events in parallel instead of being in sequential manner like `SceneTree`
+- Scene Tree hook (Scene Tree): `SceneTree` singleton class was modified to invoke `NodeDispatcher` events each frame before any of its own iteration events can be fired off.
+- Paralex: an improved asynchronous execution module that use the Godot provided `CommandQueueMT` model, but provide methods that can be called by GDscript
+- Record: A simple dataclass that trivialize the serialization and deserialization of resource objects (deprecated)
+- Settings Server: A singleton class that contains everything related to application settings, along with the means to apply it
+- State automaton: A simple module that provide GDscript class objects with a performance way to interact with finite state machine. While being faster than most GDscript implementation (thanks to it being implemented in C++), this module in itself is not very efficient
+- RTS Com: A module that provide the game that I was making with a way to manage and interact a massive game match. The match could contains dozens of squadrons, and each squadron could have up to 40 units with their own states and animation, that's why a unique and efficient way is required to handle it, and `Sentrience` (the main singleton class of this module) does just that
 
-Godot is completely free and open source under the very permissive [MIT license](https://godotengine.org/license).
-No strings attached, no royalties, nothing. The users' games are theirs, down
-to the last line of engine code. Godot's development is fully independent and
-community-driven, empowering users to help shape their engine to match their
-expectations. It is supported by the [Software Freedom Conservancy](https://sfconservancy.org/)
-not-for-profit.
+ ## Mô tả
+Đây là một bản fork của Godot Engine bởi tôi, cycastic (aka. UwUOwOUmUOmO). Repo này ban đầu được tạo ra để sử dụng cho dự án game indie của tôi nhưng do nhiều lý do, tôi đã quyết định công khai nó.
+Sau đây là các tính năng tôi đã thêm vào engine, không theo thứ tự nào cả:
 
-Before being open sourced in [February 2014](https://github.com/godotengine/godot/commit/0b806ee0fc9097fa7bda7ac0109191c9c5e0a1ac),
-Godot had been developed by [Juan Linietsky](https://github.com/reduz) and
-[Ariel Manzur](https://github.com/punto-) (both still maintaining the project) for several
-years as an in-house engine, used to publish several work-for-hire titles.
-
-![Screenshot of a 3D scene in the Godot Engine editor](https://raw.githubusercontent.com/godotengine/godot-design/master/screenshots/editor_tps_demo_1920x1080.jpg)
-
-## Getting the engine
-
-### Binary downloads
-
-Official binaries for the Godot editor and the export templates can be found
-[on the homepage](https://godotengine.org/download).
-
-### Compiling from source
-
-[See the official docs](https://docs.godotengine.org/en/latest/development/compiling/)
-for compilation instructions for every supported platform.
-
-## Community and contributing
-
-Godot is not only an engine but an ever-growing community of users and engine
-developers. The main community channels are listed [on the homepage](https://godotengine.org/community).
-
-The best way to get in touch with the core engine developers is to join the
-[Godot Contributors Chat](https://chat.godotengine.org).
-
-To get started contributing to the project, see the [contributing guide](CONTRIBUTING.md).
-
-## Documentation and demos
-
-The official documentation is hosted on [ReadTheDocs](https://docs.godotengine.org).
-It is maintained by the Godot community in its own [GitHub repository](https://github.com/godotengine/godot-docs).
-
-The [class reference](https://docs.godotengine.org/en/latest/classes/)
-is also accessible from the Godot editor.
-
-We also maintain official demos in their own [GitHub repository](https://github.com/godotengine/godot-demo-projects)
-as well as a list of [awesome Godot community resources](https://github.com/godotengine/awesome-godot).
-
-There are also a number of other
-[learning resources](https://docs.godotengine.org/en/latest/community/tutorials.html)
-provided by the community, such as text and video tutorials, demos, etc.
-Consult the [community channels](https://godotengine.org/community)
-for more information.
-
-[![Actions Build Status](https://github.com/godotengine/godot/workflows/Godot/badge.svg?branch=master)](https://github.com/godotengine/godot/actions)
-[![Code Triagers Badge](https://www.codetriage.com/godotengine/godot/badges/users.svg)](https://www.codetriage.com/godotengine/godot)
-[![Translate on Weblate](https://hosted.weblate.org/widgets/godot-engine/-/godot/svg-badge.svg)](https://hosted.weblate.org/engage/godot-engine/?utm_source=widget)
-[![Total alerts on LGTM](https://img.shields.io/lgtm/alerts/g/godotengine/godot.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/godotengine/godot/alerts)
-[![TODOs](https://badgen.net/https/api.tickgit.com/badgen/github.com/godotengine/godot)](https://www.tickgit.com/browse?repo=github.com/godotengine/godot)
+- Advanced curve: lớp con của `Curve`, dùng để tính tích phân của hình cung bằng phương pháp hình thang
+- Daemon manager: một lớp singleton dùng để quản lý các tiến trình nền (ngừng hỗ trợ)
+- Basic scheduler: một lớp singleton tạo ra để nghiên cứu cách thức hoạt động của bộ quản lý tiến trình (ngừng hỗ trợ)
+- File Access EPK: Một lớp con của `FileAccess`, dùng để đọc file tài nguyên được mã hóa `.epk`
+- Virtual File Access (VFA): Một lớp con của `FileAccess`, dùng để đọc các tập tin từ các `FileAccess` khác và lưu vào trong một vùng bộ nhớ cấp phát bởi heap. Các tập tin mới này dược gọi là tập tin ảo.
+- Virtual File Access (Project Settings): `ProjectSettings` đã được sửa đổi để có khả năng đọc các file tài nguyên `.pck` vào bộ nhớ làm file ảo. Theo các thử nghiệm sơ bộ, việc làm này không những không cải thiện thời gian tải tài nguyên mà còn chiếm nhiều bộ nhớ
+- GodotSteam: Module giúp Godot sử dụng các tính năng của Steam. Repo gốc có thể được tìm thấy tại [đây](https://gramps.github.io/GodotSteam/)
+- Hub: Một lớp singleton đơn giản dùng để log thông tin
+- Future: một module đơn giản giúp Godot xử lý bất đồng bộ. Module này chưa được kiểm nghiệm kỹ càng, và đã bị thay thế bổi Paralex
+- Layerable Control: Một lớp con của `Control` (thành phần giao diện trong Godot) được dùng để mở và đóng các layerable controls khác theo kiểu vào trước ra sau.
+- Node Dispatcher: Một lớp singleton dùng để gọi các sự kiện lặp của Godot (`_process` và `_physics_process`) một cách song song thay vì tuần tự như `SceneTree`.
+- Scene Tree hook (Scene Tree): `SceneTree` đã được sửa đổi để gọi các sự kiện lặp của `NodeDispatcher` trước khi gọi các sự kiện của chính nó mỗi frame
+- Paralex: Một module thực thi bất đồng bộ được cải tiến, dựa vào `CommandQueueMT` của Godot và cung cấp các phương thức để người lập trình có thể gọi từ GDscript.
+- Record: Một lớp chứa dữ liệu đơn giản để tối ưu hóa quá trình mã hóa và giải mã file tài nguyên (ngừng hỗ trợ)
+- Settings Server: Một lớp singleton dùng để lưu trữ các cài đặt của ứng dụng, và các phương thức dùng để áp đặt nó
+- State automaton: Một module đơn giản dùng để cung cấp cho các đối tượng GDscript cách để tương tác với máy trạng thái hữu hạn
+- RTS Com: Một module dùng để quản lý trận đấu trong game của tôi làm. Một trận đấu có thể có hàng tá tiểu đội, và mỗi tiểu đội có thể có tới 40 đơn vị với các trạng thái và animation riêng của chúng, nên cần một cách nào đó để quản lý và xử lý nó một cách tối ưu và hiệu quả nhất, và `Sentrience` (một lớp singleton chính của module này) được tạo ra để giải quyết điều đó.
