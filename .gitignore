@@ -18,6 +18,8 @@
 # - Visual Studio specific
 # - OS specific
 
+modules/godotsteam/sdk/
+
 ###########################
 ### Build configuration ###
 ###########################
