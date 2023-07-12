@@ -9,8 +9,11 @@
 
 Original repository: https://github.com/godotengine/godot/tree/3.5
 
+Repo gốc (repo upstream): https://github.com/godotengine/godot/tree/3.5
+
+
 ## Description
-This is a custom build of the Godot Engine (v3.5.0) by me, cycastic (also known by my accursed handle UwUOwOUmUOmO). This repository is originally created dedicated to my unnamed RTS game, but due to various reasons, I decided to make it available publicly.
+This is a modified codebase of the Godot Engine (v3.5.0) by me, cycastic (or UwUOwOUmUOmO). This repository is originally created dedicated to my unnamed RTS game, but due to various reasons, I decided to make it available publicly.
 The following is a list of feature that was added to the engine, most are situated inside `modules/`, others are modified classes from `core/`:
 
 - Advanced curve: A derived class from `Curve`, used for approximation of definite integral using Trapezoidal rule
@@ -31,8 +34,12 @@ The following is a list of feature that was added to the engine, most are situat
 - State automaton: A simple module that provide GDscript class objects with a performance way to interact with finite state machine. While being faster than most GDscript implementation (thanks to it being implemented in C++), this module in itself is not very efficient
 - RTS Com: A module that provide the game that I was making with a way to manage and interact a massive game match. The match could contains dozens of squadrons, and each squadron could have up to 40 units with their own states and animation, that's why a unique and efficient way is required to handle it, and `Sentrience` (the main singleton class of this module) does just that
 
+Please note that while I have modified this codebase, it remains subject to the original [MIT License](LICENSE.txt) that applies to the Godot project.
+
+Thank you to the Godot community for providing the foundation on which my modifications are built.
+
  ## Mô tả
-Đây là một bản fork của Godot Engine bởi tôi, cycastic (aka. UwUOwOUmUOmO). Repo này ban đầu được tạo ra để sử dụng cho dự án game indie của tôi nhưng do nhiều lý do, tôi đã quyết định công khai nó.
+Đây là một bản mã nguồn của Godot Engine được chỉnh sửa bởi tôi, cycastic (aka. UwUOwOUmUOmO). Repo này ban đầu được tạo ra để sử dụng cho dự án game indie của tôi nhưng do nhiều lý do, tôi đã quyết định công khai nó.
 Sau đây là các tính năng tôi đã thêm vào engine, không theo thứ tự nào cả:
 
 - Advanced curve: lớp con của `Curve`, dùng để tính tích phân của hình cung bằng phương pháp hình thang
@@ -52,3 +59,7 @@ Sau đây là các tính năng tôi đã thêm vào engine, không theo thứ t�
 - Settings Server: Một lớp singleton dùng để lưu trữ các cài đặt của ứng dụng, và các phương thức dùng để áp đặt nó
 - State automaton: Một module đơn giản dùng để cung cấp cho các đối tượng GDscript cách để tương tác với máy trạng thái hữu hạn
 - RTS Com: Một module dùng để quản lý trận đấu trong game của tôi làm. Một trận đấu có thể có hàng tá tiểu đội, và mỗi tiểu đội có thể có tới 40 đơn vị với các trạng thái và animation riêng của chúng, nên cần một cách nào đó để quản lý và xử lý nó một cách tối ưu và hiệu quả nhất, và `Sentrience` (một lớp singleton chính của module này) được tạo ra để giải quyết điều đó.
+
+Xin hãy lưu ý là tuy tôi đã chỉnh sửa mã nguồn này, nó vẫn tuân theo [Giấy phép MIT](LICENSE.txt) được áp dụng cho dự án mã nguồn mở Godot.
+
+Xin cám ơn cộng đồng Godot vì đã cung cấp nền tảng code để giúp tôi xây dựng nên phiên bản này.
